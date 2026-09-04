@@ -1,0 +1,63 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Modelo Matemático y Distribuciones de Probabilidad: Simulación de Visorías de Fútbol}
+\author{Proyecto de Curso - Modelación y Simulación}
+\date{Ciclo 2, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Definición del Sistema y Fuentes de Aleatoriedad}
+El sistema simula un campamento de reclutamiento (visorías) para las fuerzas básicas de un club de fútbol. El comportamiento de este sistema está determinado por tres fuentes de aleatoriedad: el flujo de llegada de los aspirantes, la asignación de sus capacidades atléticas, y el criterio para finalizar la búsqueda de talentos[cite: 1].
+
+\section{Modelado de Llegadas: Proceso de Poisson y Distribución Exponencial}
+La llegada de los jóvenes al complejo deportivo se modela asumiendo que los eventos ocurren de forma independiente y a una tasa promedio constante[cite: 4].
+
+\subsection{Frecuencia de llegadas (Poisson)}
+La cantidad de aspirantes que llegan en un intervalo de tiempo fijo sigue una distribución de Poisson[cite: 4]. La función de probabilidad es:
+\begin{equation}
+    P(X=k) = \frac{e^{-\lambda}\lambda^{k}}{k!}
+\end{equation}
+Donde $\lambda$ es la tasa de llegadas esperada por hora y $k$ es el número de ocurrencias[cite: 4].
+
+\subsection{Tiempos entre llegadas (Exponencial)}
+El tiempo de espera continuo entre la llegada de un aspirante y el siguiente sigue una distribución Exponencial[cite: 3]. La función de densidad de probabilidad es:
+\begin{equation}
+    f(x) = \lambda e^{-\lambda x}, \quad \text{para } x \ge 0
+\end{equation}
+El motor de simulación generará los tiempos de diferencia entre cada registro utilizando esta distribución[cite: 1, 3].
+
+\section{Generación de Atributos: Distribución Normal}
+Cada aspirante posee 8 atributos que evalúan sus condiciones físicas, técnicas y mentales. Debido a que las características humanas tienden a agruparse simétricamente alrededor de un promedio, se utiliza la Distribución Normal[cite: 5].
+
+La función de densidad se define como:
+\begin{equation}
+    F(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}
+\end{equation}
+Donde $\mu$ es la media y $\sigma$ es la desviación estándar[cite: 5]. En el sistema, se utilizará una media $\mu = 50$ y una desviación estándar $\sigma = 15$ sobre una escala de 99 puntos.
+
+\section{Búsqueda de Talento y Parada: Distribución Binomial Negativa}
+El campamento tiene un objetivo fijo: fichar a exactamente $r = 3$ prospectos de élite. Para modelar la cantidad de aspirantes que se deben evaluar hasta alcanzar este objetivo logístico, se utiliza la Distribución Binomial Negativa[cite: 6].
+
+Esta distribución consiste en repetir un experimento con resultados independientes hasta acumular una cantidad de éxitos $r$[cite: 6]. La función de probabilidad es:
+\begin{equation}
+    P(X=x) = \binom{x-1}{r-1} p^{r}(1-p)^{x-r}
+\end{equation}
+Donde $p$ es la probabilidad de que un jugador sea catalogado como élite y $r=3$[cite: 6]. 
+
+\section{Algoritmos de Generación de Variables Aleatorias}
+Para dar cumplimiento a los objetivos analíticos, la simulación implementará y comparará métodos algorítmicos formales para la generación de datos[cite: 1]:
+
+\begin{itemize}
+    \item \textbf{Para los tiempos de llegada (Exponencial):} Se empleará el Método de la Transformada Inversa[cite: 1]. Partiendo de la distribución acumulada $F(x) = 1 - e^{-\lambda x}$[cite: 3], se obtiene el generador $x = -\frac{1}{\lambda}\ln(1-U)$.
+    \item \textbf{Para los atributos (Normal):} Se implementarán y compararán dos algoritmos en función de su eficiencia computacional (tiempo de ejecución) y precisión estadística[cite: 1]. Se contrastará el Método de la Transformada Inversa, utilizando una aproximación numérica, frente al Método Polar (Box-Muller) o el método de Aceptación-Rechazo[cite: 1].
+\end{itemize}
+
+\end{document}
