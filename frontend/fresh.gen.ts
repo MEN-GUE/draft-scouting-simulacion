@@ -10,6 +10,7 @@ import * as $index from "./routes/index.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $HistogramaCampana from "./islands/HistogramaCampana.tsx";
 import * as $RadarProspectos from "./islands/RadarProspectos.tsx";
+import * as $ScoutingDashboard from "./islands/ScoutingDashboard.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -24,6 +25,7 @@ const manifest = {
     "./islands/Counter.tsx": $Counter,
     "./islands/HistogramaCampana.tsx": $HistogramaCampana,
     "./islands/RadarProspectos.tsx": $RadarProspectos,
+    "./islands/ScoutingDashboard.tsx": $ScoutingDashboard,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
