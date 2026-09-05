@@ -1,0 +1,50 @@
+[
+  {
+    "ID": 823,
+    "TiempoLlegada": 16.21819454829036,
+    "Atributos": {
+      "Velocidad": 93,
+      "Resistencia": 65,
+      "Fuerza": 53,
+      "ControlBalon": 29,
+      "PaseCorto": 65,
+      "Definicion": 92,
+      "Vision": 44,
+      "Compostura": 55
+    },
+    "PromedioGeneral": 62,
+    "EsElite": true
+  },
+  {
+    "ID": 1252,
+    "TiempoLlegada": 24.810674263684025,
+    "Atributos": {
+      "Velocidad": 92,
+      "Resistencia": 89,
+      "Fuerza": 97,
+      "ControlBalon": 50,
+      "PaseCorto": 43,
+      "Definicion": 30,
+      "Vision": 60,
+      "Compostura": 63
+    },
+    "PromedioGeneral": 65.5,
+    "EsElite": true
+  },
+  {
+    "ID": 1942,
+    "TiempoLlegada": 38.598710206731575,
+    "Atributos": {
+      "Velocidad": 56,
+      "Resistencia": 64,
+      "Fuerza": 66,
+      "ControlBalon": 76,
+      "PaseCorto": 73,
+      "Definicion": 92,
+      "Vision": 95,
+      "Compostura": 31
+    },
+    "PromedioGeneral": 69.125,
+    "EsElite": true
+  }
+]
